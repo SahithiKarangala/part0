@@ -3,10 +3,11 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/new_note
+    Note right of browser: The below sequence of event is when save button is clicked
+    browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
     Note left of server: The server adds the new note to the notes array
-    server->>browser: 302 staus code and redirect to the url in response header
+    server-->>browser: 302 status code and redirect to the url in response header
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
