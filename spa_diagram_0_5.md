@@ -1,16 +1,8 @@
 sequenceDiagram
-
     participant browser
     participant server
 
-    Note right of browser: The below sequence of event is when save button is clicked
-    browser-->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    Note left of server: The server adds the new note to the notes array
-    server-->>browser: 302 status code and redirect to the url in response header
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: GET  https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: HTML document
     deactivate server
@@ -20,7 +12,7 @@ sequenceDiagram
     server-->>browser: the css file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
@@ -32,5 +24,4 @@ sequenceDiagram
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the updated notes
-   
+    Note right of browser: The browser executes the callback function that renders the notes
